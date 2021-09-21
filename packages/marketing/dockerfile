@@ -11,4 +11,4 @@ COPY . .
 # Expose port
 EXPOSE 8081
 # Start the marketing
-CMD [ "yarn", "run", "start" ]
+CMD [ "yarn", "start" ]

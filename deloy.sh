@@ -11,4 +11,4 @@ docker-compose down
 docker-compose up -d --build
 
 # Remove caches
-# yes | docker system prune
+yes | docker system prune

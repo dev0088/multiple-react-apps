@@ -11,4 +11,4 @@ COPY . .
 # Expose port
 EXPOSE 8083
 # Start the dashboard
-CMD [ "yarn", "start" ]
+CMD [ "yarn", "run", "start" ]

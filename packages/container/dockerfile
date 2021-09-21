@@ -11,4 +11,4 @@ COPY . .
 # Expose port
 EXPOSE 8080
 # Start the container
-CMD [ "yarn", "start" ]
+CMD [ "yarn", "run", "start" ]

@@ -10,6 +10,8 @@ services:
       dockerfile: ./dockerfile
     volumes:
       - ./packages/auth:/auth
+    expose:
+      - "8082"
     ports:
       - "8082:8082"
     command: yarn start
@@ -28,6 +30,8 @@ services:
     volumes:
       - ./packages/container:/container
     command: yarn start
+    expose:
+      - "8080"
     ports:
       - "8080:8080"
     networks:
@@ -44,6 +48,8 @@ services:
       dockerfile: ./dockerfile
     volumes:
       - ./packages/marketing:/marketing
+    expose:
+      - "8081"
     ports:
       - "8081:8081"
     command: yarn start
@@ -61,6 +67,8 @@ services:
       dockerfile: ./dockerfile
     volumes:
       - ./packages/dashboard:/dashboard
+    expose:
+      - "8083"
     ports:
       - "8083:8083"
     command: yarn start

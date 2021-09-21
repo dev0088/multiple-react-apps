@@ -34,9 +34,6 @@ services:
       services-network:
         aliases:
           - container-network
-    # # command: bash -c "bundle exec rails db:migrate && bundle exec rails s -b 0.0.0.0"
-    # command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails db:migrate && bundle exec rails s -p 3000 -b '0.0.0.0'"
-
 
   marketing:
     container_name: marketing
@@ -55,22 +52,22 @@ services:
         aliases:
           - marketing-network
 
-  # dashboard:
-  #   container_name: dashboard
-  #   image: mfe/dashboard
-  #   hostname: dashboard
-  #   build:
-  #     context: ./packages/dashboard
-  #     dockerfile: ./dockerfile
-  #   volumes:
-  #     - ./packages/dashboard:/dashboard
-  #   ports:
-  #     - "8083:8083"
-  #   command: bash -c "yarn run start"
-  #   networks:
-  #     services-network:
-  #       aliases:
-  #         - dashboard-network
+  dashboard:
+    container_name: dashboard
+    image: mfe/dashboard
+    hostname: dashboard
+    build:
+      context: ./packages/dashboard
+      dockerfile: ./dockerfile
+    volumes:
+      - ./packages/dashboard:/dashboard
+    ports:
+      - "8083:8083"
+    command: bash -c "yarn run start"
+    networks:
+      services-network:
+        aliases:
+          - dashboard-network
 
 networks:
   services-network:

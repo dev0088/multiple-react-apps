@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Remove caches
-# yes | docker system prune
+yes | docker system prune
 
 # Stop previous dockers
 docker-compose stop

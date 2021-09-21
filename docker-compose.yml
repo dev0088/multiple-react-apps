@@ -3,6 +3,7 @@ version: "3.8"
 services:
   auth:
     container_name: auth
+    image: auth
     hostname: auth
     build:
       context: ./packages/auth
@@ -18,6 +19,7 @@ services:
 
   container:
     container_name: container
+    image: container
     hostname: container
     build:
       context: ./packages/container
@@ -36,6 +38,7 @@ services:
 
   marketing:
     container_name: marketing
+    image: marketing
     hostname: marketing
     build:
       context: ./packages/marketing
@@ -49,20 +52,21 @@ services:
         aliases:
           - marketing-network
 
-  dashboard:
-    container_name: dashboard
-    hostname: dashboard
-    build:
-      context: ./packages/dashboard
-      dockerfile: ./dockerfile
-    volumes:
-      - ./packages/dashboard:/dashboard
-    ports:
-      - "8083:8083"
-    networks:
-      services-network:
-        aliases:
-          - dashboard-network
+  # dashboard:
+  #   container_name: dashboard
+  #   image: dashboard
+  #   hostname: dashboard
+  #   build:
+  #     context: ./packages/dashboard
+  #     dockerfile: ./dockerfile
+  #   volumes:
+  #     - ./packages/dashboard:/dashboard
+  #   ports:
+  #     - "8083:8083"
+  #   networks:
+  #     services-network:
+  #       aliases:
+  #         - dashboard-network
 
 networks:
   services-network:

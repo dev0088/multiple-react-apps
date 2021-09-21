@@ -1,0 +1,69 @@
+version: "3.8"
+
+services:
+  auth:
+    container_name: auth
+    hostname: auth
+    build:
+      context: ./packages/auth
+      dockerfile: ./dockerfile
+    volumes:
+      - ./packages/auth:/auth
+    ports:
+      - "8082:8082"
+    networks:
+      services-network:
+        aliases:
+          - auth-network
+
+  container:
+    container_name: container
+    hostname: container
+    build:
+      context: ./packages/container
+      dockerfile: ./dockerfile
+    volumes:
+      - ./packages/container:/container
+    ports:
+      - "8080:8080"
+    networks:
+      services-network:
+        aliases:
+          - container-network
+    # # command: bash -c "bundle exec rails db:migrate && bundle exec rails s -b 0.0.0.0"
+    # command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails db:migrate && bundle exec rails s -p 3000 -b '0.0.0.0'"
+  
+  dashboard:
+    container_name: dashboard
+    hostname: dashboard
+    build:
+      context: ./packages/dashboard
+      dockerfile: ./dockerfile
+    volumes:
+      - ./packages/dashboard:/dashboard
+    ports:
+      - "8083:8083"
+    networks:
+      services-network:
+        aliases:
+          - dashboard-network
+
+  marketing:
+    container_name: marketing
+    hostname: marketing
+    build:
+      context: ./packages/marketing
+      dockerfile: ./dockerfile
+    volumes:
+      - ./packages/marketing:/marketing
+    ports:
+      - "8081:8081"
+    networks:
+      services-network:
+        aliases:
+          - marketing-network
+
+networks:
+  services-network:
+    name: services-network
+    driver: bridge
